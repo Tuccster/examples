@@ -1,5 +1,6 @@
 from nicegui import ui
 
+# Making cookies takes time
 cookies = 0
 
 ui.label().bind_text_from(globals(), 'cookies', lambda x: f'{x} cookies')

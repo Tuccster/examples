@@ -40,7 +40,7 @@ class Timer(Tickable):
             self.elapsed = 0
             self.percent_complete = 0
             self._complete = False
-            
+
 
 def provide_ticks_to(*args: Tickable | Callable[[int], Any]):
     _tick_list.extend(args)
@@ -72,7 +72,11 @@ provide_ticks_to(timer)
 start_game_ticks()
 
 ui.label().bind_text_from(globals(), 'cookies', lambda x: f'{x} cookies')
-ui.linear_progress(show_value=False).bind_value_from(globals()['timer'], 'percent_complete').classes('w-1/4').props('animation-speed=100')
+ui.linear_progress(show_value=False)\
+    .bind_value_from(globals()['timer'], 'percent_complete')\
+    .classes('w-1/4')\
+    .props('animation-speed=150')
+
 ui.label().bind_text_from(globals()['timer'], 'elapsed', lambda s: f'{round(s, 1)}s')
 ui.button('make cookie', on_click=lambda: timer.reset())
 
